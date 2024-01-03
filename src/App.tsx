@@ -27,10 +27,10 @@ const Grid = () => {
     <svg
       width="100%"
       height="100%"
-      viewBox="0 0 1200 400"
+      viewBox="0 0 1200 600"
       xmlns="http://www.w3.org/2000/svg"
     >
-      {Array.from(Array(27)).map((_, i) => (
+      {Array.from(Array(44)).map((_, i) => (
         <Fragment key={i}>
           <line
             x1="0"
@@ -68,9 +68,9 @@ const Stars = () => {
       {[...Array(200)].map((_, index) => (
         <circle
           key={index}
-          cx={getRandomNumber(50, 1350)}
-          cy={getRandomNumber(50, 1350)}
-          r={getRandomNumber(1, 4)}
+          cx={getRandomNumber(-1400, 2800)}
+          cy={getRandomNumber(-1400, 2800)}
+          r={getRandomNumber(1, 10)}
           fill="currentColor"
         />
       ))}
@@ -81,23 +81,21 @@ const Stars = () => {
 const Button = () => {
   return (
     <button className="group border border-black rounded-md shadow-[0px_0px_0px_2px_rgba(0,0,0,0.1)]">
-      <div className="relative p-4 shadow-[inset_0px_0px_1px_1px_rgba(255,255,255,0.5)] rounded-[0.3rem] bg-black overflow-hidden">
+      <div className="relative flex flex-col p-4 shadow-[inset_0px_0px_1px_1px_rgba(255,255,255,0.5)] rounded-[0.3rem] bg-black overflow-hidden">
         <div className="text-white z-10">
           <Icon />
         </div>
-        <div className="text-white w-[200%] absolute top-[-150%] left-0 group-hover:left-[-10%] transition-all duration-[2000ms]">
+        <div className="absolute w-full h-[60%] left-0 top-0 overflow-hidden text-white">
           <Stars />
         </div>
-        <div
-          className="absolute w-[400%] bottom-[-40%] left-[-150%] z-1 text-white"
-          style={{ perspective: "36px" }}
-        >
+        <div className="absolute w-full h-[50%] left-0 bottom-0 overflow-hidden text-white">
           <div
-            style={{
-              transform: "rotateX(60deg)",
-            }}
+            className="absolute w-[200%] left-[-50%] top-[-50%]"
+            style={{ perspective: "32px" }}
           >
-            <Grid />
+            <div style={{ transform: "rotateX(60deg)" }}>
+              <Grid />
+            </div>
           </div>
         </div>
       </div>
